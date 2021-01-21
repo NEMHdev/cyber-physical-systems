@@ -1,0 +1,35 @@
+class FilteredIRSensor is subclass of IRSensor
+
+instance variables
+
+-- sensor to be filtered
+private sensor: IRSensor;
+
+-- sequence of previous readings
+private samples: seq of real
+
+operations
+
+-- constructor for FilteredIRSensor
+public FilteredIRSensor: IRSensor ==> FilteredIRSensor
+FilteredIRSensor(s) == (
+	sensor := s;
+	samples := []
+);
+
+public getReading: () ==> real
+getReading() == (
+  dcl reading: real := sensor.getReading();
+  dcl average: real := 0;
+  
+  -- compute average
+  
+  IO`printf("Average: %s of %s\n", [average, samples]);
+	return average
+);
+
+public hasFailed: () ==> bool
+hasFailed() == 
+	return sensor.hasFailed(); 
+
+end FilteredIRSensor

@@ -1,0 +1,23 @@
+class Servo
+
+instance variables
+
+-- access to test data
+env: Environment;
+side: Environment`Side
+
+operations
+
+-- constructor for Servo
+public Servo: Environment * Environment`Side ==> Servo
+Servo(e,s) == (
+	env := e;
+	side := s
+);
+
+public setSpeed: real ==> ()
+setSpeed(value) == 
+	env.setServoSpeed(side,value)
+pre -1 <= value and value <= 1
+
+end Servo

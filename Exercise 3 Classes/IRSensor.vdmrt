@@ -1,0 +1,26 @@
+class IRSensor
+
+instance variables 
+
+-- access to test data
+env: Environment;
+side: Environment`Side
+
+operations
+
+-- constructor for IRSensor
+public IRSensor: Environment * Environment`Side ==> IRSensor
+IRSensor(e,s) == (
+	env := e;
+	side := s
+);
+
+public getReading: () ==> real
+getReading() == 
+	return env.getSensorValue(side);
+
+public hasFailed: () ==> bool
+hasFailed() == 
+	return getReading() = 0
+
+end IRSensor
